@@ -1,0 +1,29 @@
+--SQL Query to Get Shows for a Given Date and Theatre
+
+SELECT 
+    s.show_id,
+    m.title AS movie_title,
+    s.show_date,
+    s.start_time,
+    s.end_time,
+    scr.screen_name
+FROM Show s
+JOIN Screen scr ON s.screen_id = scr.screen_id
+JOIN Theatre t ON scr.theatre_id = t.theatre_id
+JOIN Movie m ON s.movie_id = m.movie_id
+WHERE t.theatre_id = 1
+  AND s.show_date = '2025-05-29'
+ORDER BY s.start_time;
+
+--Show Seat Types and Availability for a Given Show
+
+SELECT 
+    st.type_name,
+    ss.total_seats,
+    ss.available_seats,
+    ss.price
+FROM ShowSeat ss
+JOIN SeatType st ON ss.seat_type_id = st.seat_type_id
+WHERE ss.show_id = 401;
+
+
