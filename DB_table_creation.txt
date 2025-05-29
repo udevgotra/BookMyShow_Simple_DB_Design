@@ -1,0 +1,66 @@
+
+--Entity    Attributes                                                                
+
+ --Theatre   theatre_id, name, location                                          
+ --Screen    screen_id, theatre_id, screen_name, seat_capacity                 
+ --Movie     movie_id, title, language, duration, genre
+ --Show      show_id, screen_id, movie_id, show_date, start_time, end_time
+
+
+SQL Table Creation
+
+CREATE TABLE Theatre (
+    theatre_id INT PRIMARY KEY,
+    name VARCHAR(100),
+    location VARCHAR(100)
+);
+
+CREATE TABLE Screen (
+    screen_id INT PRIMARY KEY,
+    theatre_id INT,
+    screen_name VARCHAR(50),
+    seat_capacity INT,
+    FOREIGN KEY (theatre_id) REFERENCES Theatre(theatre_id)
+);
+
+CREATE TABLE Movie (
+    movie_id INT PRIMARY KEY,
+    title VARCHAR(100),
+    language VARCHAR(50),
+    duration INT, -- duration in minutes
+    genre VARCHAR(50)
+);
+
+CREATE TABLE Show (
+    show_id INT PRIMARY KEY,
+    screen_id INT,
+    movie_id INT,
+    show_date DATE,
+    start_time TIME,
+    end_time TIME,
+    FOREIGN KEY (screen_id) REFERENCES Screen(screen_id),
+    FOREIGN KEY (movie_id) REFERENCES Movie(movie_id)
+);
+
+CREATE TABLE SeatType (
+    seat_type_id INT PRIMARY KEY,
+    type_name VARCHAR(50),     -- e.g., 'Standard', 'Recliner'
+    description VARCHAR(100)
+);
+
+
+CREATE TABLE ShowSeat (
+    show_seat_id INT PRIMARY KEY,
+    show_id INT,
+    seat_type_id INT,
+    total_seats INT,
+    available_seats INT,
+    price DECIMAL(8, 2),
+    FOREIGN KEY (show_id) REFERENCES Show(show_id),
+    FOREIGN KEY (seat_type_id) REFERENCES SeatType(seat_type_id)
+);
+
+
+
+
+
