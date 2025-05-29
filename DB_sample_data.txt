@@ -1,3 +1,5 @@
+Sample Data insertion for below entities
+
 -- Theatres
 INSERT INTO Theatre VALUES (1, 'PVR Cinemas', 'Bangalore');
 INSERT INTO Theatre VALUES (2, 'INOX', 'Mumbai');
