@@ -5,6 +5,8 @@
  --Screen    screen_id, theatre_id, screen_name, seat_capacity                 
  --Movie     movie_id, title, language, duration, genre
  --Show      show_id, screen_id, movie_id, show_date, start_time, end_time
+ --SeatType  seat_type_id,type_name,description
+ --ShowSeat  show_seat_id,show_id,seat_type_id,total_seats,available_seats,price
 
 
 SQL Table Creation
